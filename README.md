@@ -8,63 +8,76 @@ Este proyecto tiene como objetivo analizar el comportamiento de los usuarios de 
 
 ## Datasets Utilizados
 
-- **users**: información de clientes (edad, ciudad, plan, fechas).
-- **usage**: registros de uso (llamadas, mensajes, duración, fecha).
-- **plans**: catálogo de planes (Básico y Premium).
+Se utilizaron los siguientes datasets:
+
+- **users**: información de los clientes (edad, ciudad, plan, fecha de registro y churn).
+- **usage**: registros de uso del servicio (tipo de interacción, duración, longitud y fecha).
+- **plans**: catálogo de planes disponibles (Básico y Premium).
 
 ---
 
 ## Etapas del Análisis
 
-- Exploración de datos  
-- Calidad de datos (nulos, sentinels, fechas)  
-- Limpieza de datos  
-- Transformación y agregación por usuario  
-- Análisis exploratorio  
-- Segmentación de clientes  
-- Visualización de resultados  
-- Insights de negocio  
+1. **Exploración de datos**
+   - Revisión de estructura, tipos de variables y consistencia general.
+
+2. **Calidad de datos**
+   - Identificación de valores nulos.
+   - Detección de sentinels (ej. -999 en edad, “?” en ciudad).
+   - Revisión de fechas fuera de rango.
+
+3. **Limpieza de datos**
+   - Reemplazo de valores inválidos.
+   - Tratamiento de nulos.
+   - Corrección de fechas no válidas.
+
+4. **Transformación de datos**
+   - Creación de variables de uso (mensajes, llamadas, minutos).
+   - Agregación por usuario.
+   - Unión de datasets mediante `merge`.
+
+5. **Análisis exploratorio**
+   - Estadísticas descriptivas.
+   - Visualización de distribuciones.
+   - Identificación de outliers con método IQR.
+
+6. **Segmentación de clientes**
+   - Segmentación por nivel de uso (Bajo, Medio, Alto).
+   - Segmentación por edad (Joven, Adulto, Adulto Mayor).
+
+7. **Insights de negocio**
+   - Interpretación de resultados.
+   - Recomendaciones estratégicas basadas en comportamiento del usuario.
 
 ---
 
-## Cómo ejecutar el proyecto
+## Cómo ejecutar el notebook
 
 ### Opción 1: Google Colab (recomendado)
 
-1. Abrir Google Colab  
-2. Subir el archivo `.ipynb`  
-3. Subir los datasets (`users`, `usage`, `plans`)  
-4. Ejecutar las celdas en orden  
-
----
+1. Abrir Google Colab.
+2. Subir el archivo `.ipynb`.
+3. Subir los datasets (`users`, `usage`, `plans`) al entorno.
+4. Ejecutar las celdas en orden.
 
 ### Opción 2: Jupyter Notebook (local)
 
-Instalar dependencias:
-
-```bash id="install_deps"
+1. Instalar dependencias:
+   ```bash
 pip install pandas numpy matplotlib seaborn
-
-Abrir el notebook en Jupyter y ejecutar todas las celdas de arriba hacia abajo.
-
----
+2. Abrir el notebook con Jupyter.
+3. Ejecutar todas las celdas de arriba hacia abajo.
 
 ## Guía de Reproducción
 
-- Cargar datasets originales  
-- Realizar limpieza de datos (nulos, sentinels y fechas)  
-- Crear variables de uso por usuario  
-- Generar tabla `user_profile`  
-- Ejecutar análisis exploratorio  
-- Detectar outliers con método IQR  
-- Crear segmentaciones (uso y edad)  
-- Generar visualizaciones finales  
-- Interpretar resultados  
-
----
+Cargar los datasets originales.
+Realizar limpieza de datos (nulos, sentinels y fechas).
+Generar variables de uso por usuario.
+Unir datasets para crear user_profile.
+Realizar análisis exploratorio (estadísticos y visualizaciones).
+Detectar y analizar outliers con método IQR.
+Crear segmentaciones de clientes.
+Generar insights finales y conclusiones.
 
 ## Conclusión
-
-El análisis muestra que la mayoría de los usuarios tiene un bajo nivel de uso del servicio, mientras que un grupo reducido concentra el consumo intensivo.
-
-Esto representa una oportunidad clara para optimizar planes básicos, diseñar estrategias de activación y crear ofertas enfocadas en usuarios de alto consumo.
+El análisis permitió identificar que la mayoría de usuarios tiene un bajo nivel de uso, mientras que un grupo reducido concentra el consumo intensivo del servicio. Esto abre oportunidades claras de segmentación y optimización de planes para mejorar la estrategia comercial de ConnectaTel.
